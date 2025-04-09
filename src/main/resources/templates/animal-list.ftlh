@@ -12,15 +12,21 @@
         <h1>Animal Sanctuary</h1>
     </header>
 
+    <!-- Begin Nav Bar -->
     <div class="topnav">
-        <a href="index.html">Home!</a>
+        <a href="index.html">Home</a>
         <a href="details.html">Details</a>
         <a href="about.html">About</a>
     </div>
+    <!-- End Nav Bar -->
 
     <header class="animal-container">
         <h1>${title}</h1>
     </header>
+
+    <form class="animal-container" action="/animals/name">
+            <input type="text" name="search" placeholder="Search for an animal by name &#128270;">
+    </form>
     
     <div class="animal-container">
         <#list animalList as animal> <!-- FreeMarker loop that iterates over the list of animals -->

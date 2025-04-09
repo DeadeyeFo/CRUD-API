@@ -27,20 +27,11 @@ public class AnimalController {
      */
     @GetMapping("/all")
     public String getAllAnimals(Model model) {
-    // Fetching all animals from the service
-    List<Animal> animals = AnimalService.getAllAnimals();
-    // Add the animals to the model
-    model.addAttribute("animalList", animals);
-
-    // Add a title for the page
-    model.addAttribute("title", "All Animals");
-
-    // Return the FreeMarker template name ("animal-list.ftlh")
-    return "animal-list";
+    List<Animal> animals = AnimalService.getAllAnimals(); // Fetching all animals from the service
+    model.addAttribute("animalList", animals);// Add the animals to the model
+    model.addAttribute("title", "All Animals");// Add a title for the page
+    return "animal-list"; // Return the FreeMarker template name ("animal-list.ftlh")
     }
-    // public Object getAllAnimals(){
-        //         return new ResponseEntity<>(AnimalService.getAllAnimals(), HttpStatus.OK);
-        //     }
 
     /**
      * Get a specific Animal by its ID.
@@ -61,9 +52,12 @@ public class AnimalController {
      * @param name the name of the Animal to retrieve.
      * @return a specific Animal object.
      */
-    @GetMapping("/name/{name}")
-    public Object getAnimalByName(@PathVariable String name) {
-        return new ResponseEntity<>(AnimalService.getAnimalByName(name), HttpStatus.OK);
+    @GetMapping("/name")
+    public Object getAnimalByName(@RequestParam(name = "search", defaultValue = "") String search, Model model) {
+        // return new ResponseEntity<>(AnimalService.getAnimalByName(search), HttpStatus.OK);
+        model.addAttribute("animalList", AnimalService.getAnimalByName(search)); // Add the animals to the model
+        model.addAttribute("title", "Animal By Name: " + search); // Add a title for the page
+        return "animal-list"; // Return the FreeMarker template name ("animal-list.ftlh")
     }
     
     /**
