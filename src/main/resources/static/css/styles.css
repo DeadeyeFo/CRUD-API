@@ -1,0 +1,69 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+.header {
+    background-color: #4e1919be;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Navigation Bar */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.topnav a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Animal Container */
+.animal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    width: 80%;
+}
+
+/* Individual Animal Row */
+.animal-row {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    width: 80%;
+}
+
+/* Animal Image */
+.animal-img {
+    width: 30%;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+/* Description Box */
+.animal-description {
+    flex: 1;  /* Allows text box to take remaining space */
+    padding: 1px;
+}

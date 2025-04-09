@@ -4,28 +4,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import java.util.List;
 
 /**
  * AnimalController.java.
  * Includes all REST API endpoint mappings for the Student object.
  */
-@RestController
+@Controller
 @RequestMapping("/animals")
 public class AnimalController {
 
     @Autowired //Dependency injection.
     private AnimalService AnimalService;
 
-     /**
+    /**
      * Get a list of all Animals in the database.
      * http://localhost:8080/animals/all
      *
-     * @return a list of Animal  objects.
-     */   
+     * @return a list of Animal objects.
+     */
     @GetMapping("/all")
-    public Object getAllAnimals() {
-        return new ResponseEntity<>(AnimalService.getAllAnimals(), HttpStatus.OK);
+    public String getAllAnimals(Model model) {
+    // Fetching all animals from the service
+    List<Animal> animals = AnimalService.getAllAnimals();
+    // Add the animals to the model
+    model.addAttribute("animalList", animals);
+
+    // Add a title for the page
+    model.addAttribute("title", "All Animals");
+
+    // Return the FreeMarker template name ("animal-list.ftlh")
+    return "animal-list";
     }
+    // public Object getAllAnimals(){
+        //         return new ResponseEntity<>(AnimalService.getAllAnimals(), HttpStatus.OK);
+        //     }
 
     /**
      * Get a specific Animal by its ID.
