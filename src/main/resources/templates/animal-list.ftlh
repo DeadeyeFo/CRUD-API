@@ -13,7 +13,7 @@
     </header>
 
     <div class="topnav">
-        <a href="index.html">Home</a>
+        <a href="index.html">Home!</a>
         <a href="details.html">Details</a>
         <a href="about.html">About</a>
     </div>
