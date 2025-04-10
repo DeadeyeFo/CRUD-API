@@ -67,3 +67,27 @@ body {
     flex: 1;  /* Allows text box to take remaining space */
     padding: 1px;
 }
+
+/* Animal Button */
+.animal-button {
+    background-color: #4e1919be;  /* Using the same header color */
+    color: white;  /* White text to contrast with the dark background */
+    padding: 10px 20px;  /* Padding to make the button larger and more clickable */
+    border: none;  /* No border for a cleaner look */
+    border-radius: 5px;  /* Slightly rounded corners for consistency with other elements */
+    font-size: 16px;  /* Set font size to match the other text in the page */
+    cursor: pointer;  /* Change cursor to indicate it's clickable */
+    transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth transition for hover effect */
+}
+
+/* Hover Effect */
+.animal-button:hover {
+    background-color: #7a3030be;  /* Lighter shade on hover */
+    transform: scale(1.05);  /* Slightly grow the button on hover for interactive feel */
+}
+
+/* Focused Button (for accessibility) */
+.animal-button:focus {
+    outline: none;  /* Remove default focus outline */
+    box-shadow: 0 0 5px #7a3030be;  /* Add custom focus outline for accessibility */
+}

@@ -59,18 +59,36 @@ public class AnimalController {
         model.addAttribute("title", "Animal By Name: " + search); // Add a title for the page
         return "animal-list"; // Return the FreeMarker template name ("animal-list.ftlh")
     }
+
+    /**
+     * Show the view for a new Animal Form.
+     * http://localhost:8080/animals/createForm
+     * 
+     * @param animal
+     * @return the form view
+     */
+    @GetMapping("/createForm")
+    public String showCreateAnimalForm(Model model) {
+        Animal animal = new Animal(); // Create a new Animal object
+        model.addAttribute("animal", animal); // Add the animal to the model
+        model.addAttribute("title", "Create Animal"); // Add a title for the page
+        return "animal-create"; // Return the FreeMarker template name ("animal-form.ftlh")
+    }
+    
     
     /**
      * Add a new Animal to the database.
      * http://localhost:8080/animals/add
      *
      * @param animal the Animal object to add.
-     * @return a new Animal object.
+     * @return page of updated list of Animals.
      */
     @PostMapping("/add")
-    public Object addAnimal(@RequestBody Animal animal) {
+    public Object addAnimal(Animal animal) {
         AnimalService.addAnimal(animal);
-        return new ResponseEntity<>(AnimalService.getAllAnimals(), HttpStatus.OK);
+        // return new ResponseEntity<>(AnimalService.getAllAnimals(), HttpStatus.OK);
+        return "redirect:/animals/all"; // Redirect to the list of animals after adding a new one
+        
     }
 
     /**
