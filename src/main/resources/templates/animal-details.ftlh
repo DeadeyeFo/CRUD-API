@@ -24,6 +24,7 @@
     
     <section class="info">
         <div class="info-box">
+            
             <h3>Habitat</h3>
             <p>Geckos are found in warm regions across the world, including rainforests, deserts, and grasslands. They are known for their adaptability and ability to thrive in various environments.</p>
         </div>
