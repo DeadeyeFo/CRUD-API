@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * AnimalController.java.
- * Includes all REST API endpoint mappings for the Student object.
+ * Includes all MVC mappings for the Animal object.
  */
 @Controller
 @RequestMapping("/animals")
@@ -41,8 +41,10 @@ public class AnimalController {
      * @return a specific Animal object.
      */
     @GetMapping("/{animalId:[0-9]+}")
-    public Object getAnimalById(@PathVariable int animalId) {
-        return new ResponseEntity<>(AnimalService.getAnimalById(animalId), HttpStatus.OK);
+    public Object getAnimalById(@PathVariable int animalId, Model model) {
+        model.addAttribute("animal", AnimalService.getAnimalById(animalId)); // Add the animal to the model
+        model.addAttribute("title", "Animal ID: " + animalId); // Add a title for the page
+        return "animal-list"; // Return the FreeMarker template name ("animal-list.ftlh")
     }
 
     /**
@@ -92,16 +94,32 @@ public class AnimalController {
     }
 
     /**
-     * Update an existing Animal in the database.
-     * http://localhost:8080/animals/update
+     * Show the update form for an existing Animal.
      *
-     * @param animal the Animal object to update.
-     * @return an updated Animal object.
+     *
+     * @param animalId the ID of the Animal to update.
+     * @param model the model to add attributes to.
+     * @return the update form view.
      */
-    @PutMapping("/update/{animalId}")
-    public Object updateAnimal(@PathVariable int animalId, @RequestBody Animal animal) {
-        AnimalService.updateAnimal(animal);
-        return new ResponseEntity<>(AnimalService.getAllAnimals(), HttpStatus.OK);
+    @GetMapping("/update/{animalId:[0-9]+}")
+    public Object updateAnimal(@PathVariable int animalId, Model model) {
+        model.addAttribute("animal", AnimalService.getAnimalById(animalId)); // Add the animal to the model
+        model.addAttribute("title", "Update Animal: " + animalId); // Add a title for the page
+        return "animal-update";
+    }
+
+    /**
+     * Update an existing Animal in the database.
+     * http://localhost:8080/animals/update/1
+     *
+     * @param animalId the ID of the Animal to update.
+     * @param animal the updated Animal object.
+     * @return a list of all Animals in the database.
+     */
+    @PostMapping("/update/{animalId:[0-9]+}")
+    public Object updateAnimal(@PathVariable int animalId, Animal animal) {
+        AnimalService.updateAnimal(animalId, animal);
+        return "redirect:/animals/all"; // Redirect to the list of animals after updating one
     }
  
 
@@ -112,9 +130,9 @@ public class AnimalController {
      * @param animalId the ID of the Animal to delete.
      * @return a list of all Animals in the database.
      */
-    @DeleteMapping("/delete/{animalId}")
+    @GetMapping("/delete/{animalId:[0-9]+}")
     public Object deleteAnimal(@PathVariable int animalId) {
         AnimalService.deleteAnimal(animalId);
-        return new ResponseEntity<>(AnimalService.getAllAnimals(), HttpStatus.OK);
+        return "redirect:/animals/all"; // Redirect to the list of animals after deleting one
     }
 }

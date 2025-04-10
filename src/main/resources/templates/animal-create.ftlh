@@ -14,8 +14,8 @@
 
     <!-- Begin Nav Bar -->
     <div class="topnav">
-        <a href="index.html">Home</a>
-        <a href="details.html">Details</a>
+        <a href="animal-list.ftlh">Home</a>
+        <a href="animal-details.ftlh">Details</a>
         <a href="about.html">About</a>
     </div>
     <!-- End Nav Bar -->

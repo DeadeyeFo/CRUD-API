@@ -60,7 +60,7 @@ public class AnimalService {
      *
      * @param animal the Animal object to update.
      */
-    public void updateAnimal(Animal animal) {
+    public void updateAnimal(int animalId, Animal animal) {
         animalRepository.save(animal);
     }
 

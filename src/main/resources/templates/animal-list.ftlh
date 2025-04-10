@@ -14,8 +14,8 @@
 
     <!-- Begin Nav Bar -->
     <div class="topnav">
-        <a href="index.html">Home</a>
-        <a href="details.html">Details</a>
+        <a href="animal-list.ftlh">Home</a>
+        <a href="animal-details.ftlh">Details</a>
         <a href="about.html">About</a>
     </div>
     <!-- End Nav Bar -->
@@ -24,12 +24,11 @@
         <h1>${title}</h1>
     </header>
 
+    <a href="/animals/createForm" class="animal-button" style="float: right">Add Animal</a> <!-- Link to add animal page -->
 
     <form class="animal-container" action="/animals/name">
             <input type="text" name="search" placeholder="Search for an animal by name &#128270;">
     </form>
-
-    <a href="/animals/createForm" class="animal-button" style="float: right;">Add Animal</a> <!-- Link to add animal page -->
     
     <div class="animal-container">
         <#list animalList as animal> <!-- FreeMarker loop that iterates over the list of animals -->
@@ -38,6 +37,7 @@
             <div class="${animal.description!}"> <!-- Use the animal's class to set the class of the description div -->
                 <h2>${animal.name!}</h2> <!-- Display the animal's name from animal object -->
                 <p>${animal.description!}</p> <!-- Display the animal's description from the animal object-->
+                <p2>Animal ID: <a href="/animals/update/${animal.animalId?c}" method="get">${animal.animalId!}</a></p2>
             </div>
         </div>
       </#list>
