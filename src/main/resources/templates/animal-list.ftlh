@@ -14,9 +14,7 @@
 
     <!-- Begin Nav Bar -->
     <div class="topnav">
-        <a href="animal-list.ftlh">Home</a>
-        <a href="animal-details.ftlh">Details</a>
-        <a href="about.html">About</a>
+        <a href="/animals/all">Home</a>
     </div>
     <!-- End Nav Bar -->
 
@@ -24,7 +22,9 @@
         <h1>${title}</h1>
     </header>
 
-    <a href="/animals/createForm" class="animal-button" style="float: right">Add Animal</a> <!-- Link to add animal page -->
+    <div style="display: flex; justify-content: flex-end; margin: 20px 40px 10px 0;">
+        <a href="/animals/createForm" class="animal-button">Add Animal</a>
+    </div>
 
     <form class="animal-container" action="/animals/name">
             <input type="text" name="search" placeholder="Search for an animal by name &#128270;">
@@ -37,7 +37,7 @@
             <div class="${animal.description!}"> <!-- Use the animal's class to set the class of the description div -->
                 <h2>${animal.name!}</h2> <!-- Display the animal's name from animal object -->
                 <p>${animal.description!}</p> <!-- Display the animal's description from the animal object-->
-                <p2>Animal ID: <a href="/animals/update/${animal.animalId?c}" method="get">${animal.animalId!}</a></p2>
+                <p2>Animal ID: <a href="/animals/${animal.animalId?c}" method="get">${animal.animalId!}</a></p2>
             </div>
         </div>
       </#list>

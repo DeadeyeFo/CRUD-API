@@ -44,7 +44,7 @@ public class AnimalController {
     public Object getAnimalById(@PathVariable int animalId, Model model) {
         model.addAttribute("animal", AnimalService.getAnimalById(animalId)); // Add the animal to the model
         model.addAttribute("title", "Animal ID: " + animalId); // Add a title for the page
-        return "animal-list"; // Return the FreeMarker template name ("animal-list.ftlh")
+        return "animal-details"; // Return the FreeMarker template name ("animal-list.ftlh")
     }
 
     /**
